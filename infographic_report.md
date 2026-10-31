@@ -2,6 +2,14 @@
 
 The illustrations explain the symptoms and proposed corrections. The issue reports contain executable reproductions and expected outputs. The images are conceptual explanations, not screenshots of test results.
 
+| Topic | Issue | Pull request | Theme |
+| --- | --- | --- | --- |
+| PDO SQLite | [#25106](https://github.com/php/php-src/issues/25106) | [#25109](https://github.com/php/php-src/pull/25109) | Library checkout cards |
+| array_unshift | [#25107](https://github.com/php/php-src/issues/25107) | [#25111](https://github.com/php/php-src/pull/25111) | Railway routes |
+| JSON | [#25108](https://github.com/php/php-src/issues/25108) | [#25110](https://github.com/php/php-src/pull/25110) | Botanical catalog |
+
+All three PRs target PHP-8.4. Their regression tests failed before the fixes and passed afterward on a debug and ZTS build. The selected suites passed without unexpected failures. See the issues and PRs for the commands, results, and remaining validation limits.
+
 ## PDO SQLite, library checkout cards
 
 A stale marker can retain an unread row after resetting a query. Clearing the marker makes an empty result stay empty.

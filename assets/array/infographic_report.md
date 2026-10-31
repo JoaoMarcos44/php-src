@@ -12,6 +12,8 @@ When `array_unshift()` adds a value at the front, it rebuilds the table without 
 
 The proposed fix maps each old iterator position to its position among the remaining live slots, then applies the offset for the values added at the front. This preserves the next value to visit.
 
-The regression failed before the fix and passed afterward on PHP 8.7.0-dev at commit `248c5c45409667b5e69bba38a92c5cc9edd7582a`. All 15 selected `array_unshift` and `foreach` tests passed after the patch. The full PHP suite, other platforms, release branches, and performance with many simultaneous iterators were not tested.
+The initial regression failed before the fix and passed afterward on PHP 8.7.0-dev. Publication was then validated on PHP-8.4 commit `dfcc0433fcda7fb732cba8d7ee8c857d23f9a9e7` with debug and ZTS enabled. The new PHPT failed before its fix and passed afterward. The selected suite reported 876 passed and 13 skipped, with zero unexpected failures or warnings. The build and validator exited 0. The complete PHP suite and Windows builds were not run.
 
 See the [public bug report](https://github.com/php/php-src/issues/25107) for the reproduction and related pull request.
+
+Pull request: https://github.com/php/php-src/pull/25111.

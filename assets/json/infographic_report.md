@@ -12,6 +12,8 @@ If that backed property has a setter hook, the encoder can include it as `{"id":
 
 The proposed fix skips the internal uninitialized marker before writing the property name. A separate nullable property explicitly initialized to `null` still appears in JSON, as does a getter that returns `null`.
 
-The regression failed before the fix and passed afterward on PHP 8.7.0-dev at commit `248c5c45409667b5e69bba38a92c5cc9edd7582a`. The JSON and property-hook tests reported 323 passes, five skips, and no failures. The patched build was tested on Linux NTS at that commit. The full PHP suite, other platforms, and release branches were not tested.
+The initial regression failed before the fix and passed afterward on PHP 8.7.0-dev. Publication was then validated on PHP-8.4 commit `dfcc0433fcda7fb732cba8d7ee8c857d23f9a9e7` with debug and ZTS enabled. The new PHPT failed before its fix and passed afterward. The selected suite reported 291 passed and 5 skipped, with zero unexpected failures or warnings. The build and validator exited 0. The complete PHP suite and Windows builds were not run.
 
 See the [public bug report](https://github.com/php/php-src/issues/25108) for the reproduction and related pull request.
+
+Pull request: https://github.com/php/php-src/pull/25110.
