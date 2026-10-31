@@ -1,0 +1,19 @@
+{
+  "title": "Preserve foreach iterator positions when array_unshift compacts holes",
+  "summary": "During foreach by reference, array_unshift compacts deleted slots and can skip an unvisited value. Remap the iterator position to the compacted live slots before applying the insertion offset.",
+  "docs": "The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/unshift_patch/PR.md and findings/unshift_patch/report.md.",
+  "theme": {
+    "name": "Railway stops",
+    "art_direction": "A modern railway-map editorial illustration with sparse track lines, clear station markers and flat paper texture. Use teal, saffron, off-white and dark ink.",
+    "story": "A reference foreach iterates an array containing a deleted slot. While visiting b, array_unshift adds x at the front and compacts the hole. The old iterator position skips c. Show the buggy visit route b to d and the fixed route b to c to d. The fix remaps the iterator to the compacted live slots before applying the insertion offset. Do not show x as a visited value.",
+    "labels": [
+      "array_unshift(): skipped value",
+      "FOREACH BY REFERENCE",
+      "ADD x AT FRONT",
+      "BUG: b, d",
+      "FIX: b, c, d",
+      "REMAP ITERATOR"
+    ]
+  },
+  "prompt": "Use case: infographic-diagram\nAsset type: one illustrative infographic for a PHP bug report.\nPrimary request: Explain the observed bug and its proposed fix to PHP contributors in plain English.\nStyle and composition: A modern railway-map editorial illustration with sparse track lines, clear station markers and flat paper texture. Use teal, saffron, off-white and dark ink. Create one landscape poster with a clear visual reading order and a large, legible before-and-after comparison.\nFactual story: A reference foreach iterates an array containing a deleted slot. While visiting b, array_unshift adds x at the front and compacts the hole. The old iterator position skips c. Show the buggy visit route b to d and the fixed route b to c to d. The fix remaps the iterator to the compacted live slots before applying the insertion offset. Do not show x as a visited value.\nRender only the following text, exactly as written and legible:\n- array_unshift(): skipped value\n- FOREACH BY REFERENCE\n- ADD x AT FRONT\n- BUG: b, d\n- FIX: b, c, d\n- REMAP ITERATOR\nConstraints: Accuracy is more important than decoration. Keep all examples and punctuation exact. Use no invented numbers, logos, watermarks or additional text.\nBackground facts for the artist, not additional visible copy:\nPR title: Preserve foreach iterator positions when array_unshift compacts holes\nSummary: During foreach by reference, array_unshift compacts deleted slots and can skip an unvisited value. Remap the iterator position to the compacted live slots before applying the insertion offset.\nValidation and documentation: The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/unshift_patch/PR.md and findings/unshift_patch/report.md."
+}

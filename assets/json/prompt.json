@@ -1,0 +1,19 @@
+{
+  "title": "Omit uninitialized backed properties with setter hooks from JSON",
+  "summary": "json_encode mistakenly serializes an uninitialized backed typed property with a setter hook as null. Skip the uninitialized sentinel while preserving explicitly null nullable properties and getters that return null.",
+  "docs": "The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/json_patch/PR.md and findings/json_patch/report.md.",
+  "theme": {
+    "name": "Botanical specimen catalog",
+    "art_direction": "An elegant botanical specimen catalog illustration with pressed leaves, ruled identification cards, fine linework and ample whitespace. Use soft ivory, sage green, terracotta and dark ink.",
+    "story": "JSON encodes an uninitialized backed typed property with a setter hook as null by mistake. Compare the buggy object containing id:null with the fixed empty object. The fix skips the internal uninitialized sentinel. A separate nullable property explicitly set to null still appears as id:null, as does a getter that returns null. The blank specimen card represents an absent field, not a null value.",
+    "labels": [
+      "JSON: missing is not null",
+      "UNINITIALIZED",
+      "BUG: {\"id\":null}",
+      "FIX: {}",
+      "EXPLICIT NULL: {\"id\":null}",
+      "SKIP UNINITIALIZED"
+    ]
+  },
+  "prompt": "Use case: infographic-diagram\nAsset type: one illustrative infographic for a PHP bug report.\nPrimary request: Explain the observed bug and its proposed fix to PHP contributors in plain English.\nStyle and composition: An elegant botanical specimen catalog illustration with pressed leaves, ruled identification cards, fine linework and ample whitespace. Use soft ivory, sage green, terracotta and dark ink. Create one landscape poster with a clear visual reading order and a large, legible before-and-after comparison.\nFactual story: JSON encodes an uninitialized backed typed property with a setter hook as null by mistake. Compare the buggy object containing id:null with the fixed empty object. The fix skips the internal uninitialized sentinel. A separate nullable property explicitly set to null still appears as id:null, as does a getter that returns null. The blank specimen card represents an absent field, not a null value.\nRender only the following text, exactly as written and legible:\n- JSON: missing is not null\n- UNINITIALIZED\n- BUG: {\"id\":null}\n- FIX: {}\n- EXPLICIT NULL: {\"id\":null}\n- SKIP UNINITIALIZED\nConstraints: Accuracy is more important than decoration. Keep all examples and punctuation exact. Use no invented numbers, logos, watermarks or additional text.\nBackground facts for the artist, not additional visible copy:\nPR title: Omit uninitialized backed properties with setter hooks from JSON\nSummary: json_encode mistakenly serializes an uninitialized backed typed property with a setter hook as null. Skip the uninitialized sentinel while preserving explicitly null nullable properties and getters that return null.\nValidation and documentation: The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/json_patch/PR.md and findings/json_patch/report.md."
+}

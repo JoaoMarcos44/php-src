@@ -1,0 +1,19 @@
+{
+  "title": "Reset the prefetched row when closing a PDO SQLite cursor",
+  "summary": "When a prepared SELECT has an unread row and is re-executed to an empty result, a stale pre_fetched flag can make fetchAll return a phantom row. Clear the flag when resetting the cursor.",
+  "docs": "The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/pdo_sqlite/PR.md and findings/pdo_sqlite/patch/rationale.md.",
+  "theme": {
+    "name": "Library checkout cards",
+    "art_direction": "A warm, carefully typeset editorial illustration using library checkout cards and a card drawer as the visual metaphor. Use cream paper, muted navy and rust, crisp lines and generous whitespace.",
+    "story": "A prepared statement is executed again while its previous row is unread. The next execution has no rows. A stale prefetched-row flag can cause fetchAll to return a phantom row. Show a before and after comparison: the buggy result is an array containing one null-valued row, while the fixed result is an empty array. The fix clears the pre_fetched flag whenever the cursor resets.",
+    "labels": [
+      "PDO SQLite: phantom row",
+      "UNREAD ROW",
+      "EMPTY RESULT",
+      "BUG: [{\"answer\":null}]",
+      "FIX: []",
+      "CLEAR pre_fetched ON RESET"
+    ]
+  },
+  "prompt": "Use case: infographic-diagram\nAsset type: one illustrative infographic for a PHP bug report.\nPrimary request: Explain the observed bug and its proposed fix to PHP contributors in plain English.\nStyle and composition: A warm, carefully typeset editorial illustration using library checkout cards and a card drawer as the visual metaphor. Use cream paper, muted navy and rust, crisp lines and generous whitespace. Create one landscape poster with a clear visual reading order and a large, legible before-and-after comparison.\nFactual story: A prepared statement is executed again while its previous row is unread. The next execution has no rows. A stale prefetched-row flag can cause fetchAll to return a phantom row. Show a before and after comparison: the buggy result is an array containing one null-valued row, while the fixed result is an empty array. The fix clears the pre_fetched flag whenever the cursor resets.\nRender only the following text, exactly as written and legible:\n- PDO SQLite: phantom row\n- UNREAD ROW\n- EMPTY RESULT\n- BUG: [{\"answer\":null}]\n- FIX: []\n- CLEAR pre_fetched ON RESET\nConstraints: Accuracy is more important than decoration. Keep all examples and punctuation exact. Use no invented numbers, logos, watermarks or additional text.\nBackground facts for the artist, not additional visible copy:\nPR title: Reset the prefetched row when closing a PDO SQLite cursor\nSummary: When a prepared SELECT has an unread row and is re-executed to an empty result, a stale pre_fetched flag can make fetchAll return a phantom row. Clear the flag when resetting the cursor.\nValidation and documentation: The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/pdo_sqlite/PR.md and findings/pdo_sqlite/patch/rationale.md."
+}

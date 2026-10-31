@@ -1,0 +1,17 @@
+Use case: infographic-diagram
+Asset type: one illustrative infographic for a PHP bug report.
+Primary request: Explain the observed bug and its proposed fix to PHP contributors in plain English.
+Style and composition: An elegant botanical specimen catalog illustration with pressed leaves, ruled identification cards, fine linework and ample whitespace. Use soft ivory, sage green, terracotta and dark ink. Create one landscape poster with a clear visual reading order and a large, legible before-and-after comparison.
+Factual story: JSON encodes an uninitialized backed typed property with a setter hook as null by mistake. Compare the buggy object containing id:null with the fixed empty object. The fix skips the internal uninitialized sentinel. A separate nullable property explicitly set to null still appears as id:null, as does a getter that returns null. The blank specimen card represents an absent field, not a null value.
+Render only the following text, exactly as written and legible:
+- JSON: missing is not null
+- UNINITIALIZED
+- BUG: {"id":null}
+- FIX: {}
+- EXPLICIT NULL: {"id":null}
+- SKIP UNINITIALIZED
+Constraints: Accuracy is more important than decoration. Keep all examples and punctuation exact. Use no invented numbers, logos, watermarks or additional text.
+Background facts for the artist, not additional visible copy:
+PR title: Omit uninitialized backed properties with setter hooks from JSON
+Summary: json_encode mistakenly serializes an uninitialized backed typed property with a setter hook as null. Skip the uninitialized sentinel while preserving explicitly null nullable properties and getters that return null.
+Validation and documentation: The regression fails before and passes after the patch on PHP 8.7.0-dev. See findings/json_patch/PR.md and findings/json_patch/report.md.
